@@ -1,5 +1,6 @@
 ics_sources = [
     {url:'samples/events.ics',event_properties:{color:'gold'}},
+    {url:'samples/events-noend.ics',event_properties:{color:'pink'}},
     {url:'samples/32c3.ics'},
     {url:'samples/daily_recur.ics',event_properties:{className:['daily-recur'], url:'http://recurring.events.example.org/'}}
 ]
