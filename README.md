@@ -2,7 +2,7 @@ Convert iCalendar ics to [FullCalendar][0] json using [ical.js][1].
 
 Demo
 ----
-https://2733.github.io/icalendar2fullcalendar/demo/
+https://leonaard.github.io/icalendar2fullcalendar/demo/
 
 Usage
 -----
