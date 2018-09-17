@@ -4,6 +4,10 @@ Demo
 ----
 https://leonaard.github.io/icalendar2fullcalendar/demo/
 
+Dependencies
+------------
+https://github.com/mozilla-comm/ical.js
+
 Usage
 -----
 See `./demo/demo.js`, rtfc, ask.
