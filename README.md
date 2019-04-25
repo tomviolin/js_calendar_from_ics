@@ -7,7 +7,7 @@ Convert iCalendar ics to [FullCalendar][0] json using [ical.js][1].
 
 **important:** ensure you provide sufficient CORS access on the web server hosting the ics feed(s) or nothing will display (visible in browser console).
 
-Ideally `index.html` should feed on the JS file, but my JS skills are pretty much zero so you need to manually configure each of them similarly.
+Ideally `index.html` should feed on the JS file (or the opposite), but my JS skills are pretty much zero so you need to manually configure each of them similarly.
 
 # Why
 Because it's so much better to sync your website calendar with ics feed(s) that you can edit from wherever than having to handle that within an admin webpage.
