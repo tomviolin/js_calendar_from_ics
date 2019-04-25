@@ -58,6 +58,7 @@ function fc_event(event, event_callback) {
     e = {
         title:event.getFirstPropertyValue('summary'),
         description:event.getFirstPropertyValue('description'),
+        loc:event.getFirstPropertyValue('location'),
         url:event.getFirstPropertyValue('url'),
         id:event.getFirstPropertyValue('uid'),
         className:['event-'+an_filter(event.getFirstPropertyValue('uid'))],

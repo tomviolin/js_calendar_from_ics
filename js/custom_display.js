@@ -55,15 +55,17 @@ $(document).ready(function() {
         eventLimit: true, // allow "more" link when too many events
         eventRender: function(event, element, view) {
 	  if(view.name == "listMonth" || view.name == "listWeek") {
-            element.find('.fc-list-item-title').append('<div style="margin-top: 0.5em;"></div><span style="font-size: 0.9em">'+(event.description || 'no description')+'</span></div>');
+            element.find('.fc-list-item-title').append('<div style="margin-top:5px;"></div><span style="font-size: 0.9em">'+(event.description || 'no description')+'</span>'+((event.loc) ? ('<span style="margin-top:5px;display: block"><b>Venue: </b>'+event.loc+'</span>') : ' ')+'</div>');
 	  } else {
             element.qtip({
                 content: {
-                  text: '<b>' + event.title + '</b><br/>' + (event.description || 'no description')
+                  text: '<small>'+event.start.format("HH:mm")+' - '+event.end.format("HH:mm")+'</small><br/>'+
+		         '<b>'+event.title+'</b>'+
+			 ((event.description) ? ('<br/>'+event.description) : ' ')+
+			 ((event.loc) ? ('<br/><b>Venue: </b>'+event.loc) : ' ')
                 },
                 style: {
                     classes: 'qtip-bootstrap qtip-rounded qtip-shadown qtip-light',
-                   // color: '#FFFFFF'
                 },
                 position: {
                     my: 'top left',

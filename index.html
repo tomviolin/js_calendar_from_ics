@@ -4,32 +4,34 @@
 <meta charset='utf-8' />
 <title>Our events</title>
 
-<link href='./fullcalendar.css' rel='stylesheet' />
-<link href='./list.min.css' rel='stylesheet' />
-<link href='./jquery.qtip.min.css' rel='stylesheet' />
-<link href='./fullcalendar.print.css' rel='stylesheet' media='print' />
-<link href='./overall.css' rel='stylesheet' />
+<link href='css/fullcalendar.css' rel='stylesheet' />
+<link href='css/list.min.css' rel='stylesheet' />
+<link href='css/jquery.qtip.min.css' rel='stylesheet' />
+<link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
+<link href='css/overall.css' rel='stylesheet' />
 
-<script src='./moment.min.js'></script>
-<script src='./jquery.min.js'></script>
-<script src='./fullcalendar.js'></script>
-<script src="./ical.min.js"></script>
-<script src="../ical_events.js"></script>
-<script src="../ical_fullcalendar.js"></script>
-<script src="./jquery.qtip.min.js"></script>
-<script src="./demo.js"></script>
+<script src='js/moment.min.js' type="application/javascript" ></script>
+<script src='js/jquery.min.js' type="application/javascript"></script>
+<script src='js/fullcalendar.min.js' type="application/javascript"></script>
+<script src="js/ical.min.js" type="application/javascript"></script>
+<script src="js/ical_events.js" type="application/javascript"></script>
+<script src="js/ical_fullcalendar.js" type="application/javascript"></script>
+<script src="js/jquery.qtip.min.js" type="application/javascript"></script>
+<script src="js/custom_display.js" type="application/javascript"></script>
 </head>
 
 <body>
   <center>
-  <h1 style="padding-left: 40px; text-align: left;">Alolise events</h2>
+  <h1>Alolise selected events</h1>
+    <!-- how cool would it be to feed the below from JS?! -->
     <span hidden id='ics-url1'>https://sogo.alolise.org/SOGo/dav/public/jerome.avond/Calendar/2BBA-5AB19A00-1-1147EF20.ics</span>
     <span hidden id='ics-url2'>https://sogo.alolise.org/SOGo/dav/public/contact.la-bricoleuse/Calendar/5A19-5CC08400-1-65AE8400.ics</span>
-  </div>
+    <!-- how cool would it be to feed the above from JS?! -->
   </center>
   <div id='calendar'></div>
   <div class="box-tip" >
     <p>Tip: to import the ics feeds to your calendar app, use the button next to a calendar to copy its feed URL into your clipboard.</p>
+    <!-- how cool would it be to feed the below from JS?! -->
     <div class='calendar-feed'>
       <span class="fc-event-dot" style="background-color: SeaGreen"></span>
       <span>Alolise calendar 
@@ -41,8 +43,9 @@
       <span>La Bricoleuse calendar
         <button id="copyLink2"><img src="./img/clipboard.svg" alt="copy to clipboard" title="copy to clipboard" width="15px" style="padding-top: 3px;"/></button>
       </span>
-      <script src="./copy.js"></script>
     </div>
+    <!-- how cool would it be to feed the above from JS?! -->
+    <script src="js/copy.js" type="application/javascript"></script>
   </div>
 </body>
 </html>

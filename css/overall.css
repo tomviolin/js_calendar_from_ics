@@ -1,21 +1,23 @@
 body {
-    font-family: monospace;
-    font-size: 12px;
-    max-width: 1000px;
-    margin: 0 auto 2em;
-    background-color: ghostwhite;
+  font-family: monospace;
+  font-size: 12px;
+  max-width: 1000px;
+  margin: 0 auto 2em;
+  background-color: ghostwhite;
 }
 .calendar-feed {
-    margin: 10px 8px 10px 8px;;
-    display: inline-block;
+  margin: 10px 8px 10px 8px;;
+  display: inline-block;
 }
 .calendar-feed span {
 }
 .daily-recur {
-    background: green;
+  background: green;
 }
 h1 {
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
+  padding-left: 40px; 
+  text-align: left;
 }
 .box-tip {
   margin-top: 10px;
