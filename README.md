@@ -10,7 +10,7 @@ Ideally `index.html` should feed on the JS file, but my JS skills are pretty muc
 Because it's so much better to sync your website calendar with ics feed(s) that you can edit from wherever than having to handle that within an admin webpage.
 
 # How
-This all came from [https://github.com/leonaard/icalendar2fullcalendar](https://github.com/leonaard/icalendar2fullcalendar), which provides us an out-of-the-box working solution to view calendar(s) from ics URL feeds using fullcalendar.
+This all came from [https://github.com/leonaard/icalendar2fullcalendar](https://github.com/leonaard/icalendar2fullcalendar), which provides an out-of-the-box working solution to view calendar(s) from ics URL feeds using fullcalendar.
 
 We 'built' (horribly hacky, but works) on that to obtain a calendar that also shows descriptions for events. Most of the additional code is in `js/custom_display.js` and this is also one of the 2 files you need to edit to adjust this to your needs.
 
