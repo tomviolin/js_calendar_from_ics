@@ -4,7 +4,7 @@ Convert iCalendar ics to [FullCalendar][0] json using [ical.js][1].
 ## Usage
 Edit `index.html` and `js/custom_display.js` to provide your ics feed(s) and colors.
 
-Ideally `index.html` should feed on the JS file, but again, my JS skills are pretty much zero.
+Ideally `index.html` should feed on the JS file, but my JS skills are pretty much zero so you need to manually configure each of them similarly.
 
 # Why
 Because it's so much better to sync your website calendar with ics feed(s) that you can edit from wherever than having to handle that within an admin webpage.
