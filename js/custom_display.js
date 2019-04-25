@@ -1,7 +1,7 @@
 // Edit your ics sources here
 ics_sources = [
     {url:'https://sogo.alolise.org/SOGo/dav/public/jerome.avond/Calendar/2BBA-5AB19A00-1-1147EF20.ics', event_properties:{color: 'SeaGreen'}},
-    {url:'https://sogo.alolise.org/SOGo/dav/public/contact.la-bricoleuse/Calendar/5A19-5CC08400-1-65AE8400.ics', event_properties: {color: 'DodgerBlue'}}
+    {url:'https://sogo.alolise.org/SOGo/dav/public/jean-yves.michaud/Calendar/4AF9-5CB78580-1-27506AC0.ics', event_properties: {color: 'DodgerBlue'}}
 ]
 
 
@@ -44,6 +44,10 @@ $(document).ready(function() {
             right: 'month,agendaWeek,agendaDay,listWeek,listMonth'
         },
         defaultView: 'month',
+        firstDay: '1',
+        locale: 'en',
+        lang: 'en',
+
         // customize the button names,
         // otherwise they'd all just say "list"
         views: {
@@ -59,7 +63,10 @@ $(document).ready(function() {
 	  } else {
             element.qtip({
                 content: {
-                  text: '<small>'+event.start.format("HH:mm")+' - '+event.end.format("HH:mm")+'</small><br/>'+
+                  text: '<small>'+((event.start.format("d") != event.end.format("d")) ? (event.start.format("MMM Do")
+                        +(((event.end.subtract(1,"seconds")).format("d") == event.start.format("d")) ? ' ' : ' - '
+                        +(event.end.subtract(1,"seconds")).format("MMM Do"))) : (event.start.format("HH:mm")
+                        +' - '+event.end.format("HH:mm")))+'</small><br/>'+
 		         '<b>'+event.title+'</b>'+
 			 ((event.description) ? ('<br/>'+event.description) : ' ')+
 			 ((event.loc) ? ('<br/><b>Venue: </b>'+event.loc) : ' ')

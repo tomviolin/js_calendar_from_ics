@@ -2858,7 +2858,7 @@ exports.globalDefaults = {
         day: 'day'
     },
     // buttonIcons: null,
-    allDayText: 'all-day',
+    allDayText: 'all day',
     // allows setting a min-height to the event segment to prevent short events overlapping each other
     agendaEventMinHeight: 0,
     // jquery-ui theming
@@ -14283,19 +14283,42 @@ var ListEventRenderer = /** @class */ (function (_super) {
         var bgColor = this.getBgColor(eventDef);
         var timeHtml;
         if (componentFootprint.isAllDay) {
+	    // JY | does detect AllDay at all
             timeHtml = view.getAllDayHtml();
         }
         else if (view.isMultiDayRange(componentFootprint.unzonedRange)) {
             if (seg.isStart || seg.isEnd) { // outer segment that probably lasts part of the day
-                timeHtml = util_1.htmlEscape(this._getTimeText(calendar.msToMoment(seg.startMs), calendar.msToMoment(seg.endMs), componentFootprint.isAllDay));
+	        // JY | orig
+                //timeHtml = util_1.htmlEscape(this._getTimeText(calendar.msToMoment(seg.startMs), calendar.msToMoment(seg.endMs), componentFootprint.isAllDay));
+		if (seg.isStart) {
+		    timeDayStart = moment(new Date(calendar.msToMoment(seg.startMs)['_d']));
+		    //console.log('multi-days starting ' + timeDayStart);
+                    timeHtml = 'begins at ' + timeDayStart.format("h:mma");
+		} else if (seg.isEnd) {
+		    timeDayEnd = moment(new Date(calendar.msToMoment(seg.endMs)['_d']));
+		    //console.log('multi-days ending ' + timeDayEnd);
+                    timeHtml = 'ends at ' + timeDayEnd.format("h:mma");
+	        }
             }
             else { // inner segment that lasts the whole day
                 timeHtml = view.getAllDayHtml();
             }
         }
         else {
-            // Display the normal time text for the *event's* times
-            timeHtml = util_1.htmlEscape(this.getTimeText(eventFootprint));
+	    // is it a full day event?
+	    //timeStart = moment(new Date(calendar.msToMoment(seg.startMs)['_d']));
+	    //timeEnd = moment(new Date(calendar.msToMoment(seg.endMs)['_d']));
+	    //console.log(timeStart);
+	    //console.log(timeEnd);
+	    //console.log(eventFootprint);
+
+	    // Display the normal time text for the *event's* times
+	    timeHtml = util_1.htmlEscape(this.getTimeText(eventFootprint));
+	    // JY | ugly hack to 'fix' non-detection of 'AllDay' stuff (cf eventFootprint)
+	    console.log(timeHtml);
+	    if (timeHtml == "12:00am - 12:00am" || "00:00 - 00:00") {
+                timeHtml = view.getAllDayHtml();
+	    }
         }
         if (url) {
             classes.push('fc-has-url');
@@ -14320,6 +14343,7 @@ var ListEventRenderer = /** @class */ (function (_super) {
             '</td>' +
             '</tr>';
     };
+                  //text: '<small>'+((event.start.format("d") != event.end.format("d")) ? (event.start.format("MMM DD")+' - '+event.end.format("MMM DD")) : (event.start.format("HH:mm")+' - '+event.end.format("HH:mm")))+'</small><br/>'+
     // like "4:00am"
     ListEventRenderer.prototype.computeEventTimeFormat = function () {
         return this.opt('mediumTimeFormat');
