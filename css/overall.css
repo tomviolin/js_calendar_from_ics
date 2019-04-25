@@ -2,7 +2,7 @@ body {
   font-family: monospace;
   font-size: 12px;
   max-width: 900px;
-  margin: 0 auto 2em;
+  margin: 0 auto 0;
   background-color: ghostwhite;
 }
 .calendar-feed {
