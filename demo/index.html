@@ -2,66 +2,47 @@
 <html>
 <head>
 <meta charset='utf-8' />
-
 <title>Our events</title>
 
 <link href='./fullcalendar.css' rel='stylesheet' />
 <link href='./list.min.css' rel='stylesheet' />
 <link href='./jquery.qtip.min.css' rel='stylesheet' />
 <link href='./fullcalendar.print.css' rel='stylesheet' media='print' />
+<link href='./overall.css' rel='stylesheet' />
+
 <script src='./moment.min.js'></script>
 <script src='./jquery.min.js'></script>
 <script src='./fullcalendar.js'></script>
 <script src="./ical.min.js"></script>
 <script src="../ical_events.js"></script>
 <script src="../ical_fullcalendar.js"></script>
-<!-- 
-<script src="./colorize_fullcalendar.js"></script>
--->
 <script src="./jquery.qtip.min.js"></script>
 <script src="./demo.js"></script>
-
-<style>
-body {
-    font-family: monospace;
-    font-size: 12px;
-    max-width: 900px;
-    margin: 0 auto 2em;
-}
-#calendar-feed {
-    margin-top: 10px;
-}
-#calendar-feed span {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-.daily-recur {
-    background: green;
-}
-h1 {
-  margin-bottom: 0.5em;
-}
-</style>
-
 </head>
+
 <body>
   <center>
   <h1 style="padding-left: 40px; text-align: left;">Alolise events</h2>
-    <p style="padding: 4px 4px;margin-bottom: 25px;background-color: LightBlue; border-color: whitesmoke;">Tip: to import the ics feeds to your calendar, use the button next to a calendar to copy its feed URL into your clipboard:
-    </p>
     <span hidden id='ics-url1'>https://sogo.alolise.org/SOGo/dav/public/jerome.avond/Calendar/2BBA-5AB19A00-1-1147EF20.ics</span>
     <span hidden id='ics-url2'>https://sogo.alolise.org/SOGo/dav/public/contact.la-bricoleuse/Calendar/5A19-5CC08400-1-65AE8400.ics</span>
   </div>
   </center>
   <div id='calendar'></div>
-  <div id='calendar-feed'>
-    <span>Alolise calendar: 
-      <button id="copyLink1" style="background-color: whitesmoke;border-color: gray;border-width: 1px; vertical-align: middle;border-radius: 4px;" ><img src="./img/clipboard.svg" alt="copy to clipboard" title="copy to clipboard" width="15px" style="padding-top: 3px;"/></button>
-    </span>
-    <span>La Bricoleuse calendar: 
-      <button id="copyLink2" style="background-color: whitesmoke;border-color: gray;border-width: 1px; vertical-align: middle;border-radius: 4px;" ><img src="./img/clipboard.svg" alt="copy to clipboard" title="copy to clipboard" width="15px" style="padding-top: 3px;"/></button>
-    </span>
-    <script src="./copy.js"></script>
+  <div class="box-tip" >
+    <p>Tip: to import the ics feeds to your calendar app, use the button next to a calendar to copy its feed URL into your clipboard.</p>
+    <div class='calendar-feed'>
+      <span class="fc-event-dot" style="background-color: SeaGreen"></span>
+      <span>Alolise calendar 
+        <button id="copyLink1"><img src="./img/clipboard.svg" alt="copy to clipboard" title="copy to clipboard" width="15px" style="padding-top: 3px;"/></button>
+      </span>
+    </div>
+    <div class='calendar-feed'>
+      <span class="fc-event-dot" style="background-color: DodgerBlue"></span>
+      <span>La Bricoleuse calendar
+        <button id="copyLink2"><img src="./img/clipboard.svg" alt="copy to clipboard" title="copy to clipboard" width="15px" style="padding-top: 3px;"/></button>
+      </span>
+      <script src="./copy.js"></script>
+    </div>
   </div>
 </body>
 </html>

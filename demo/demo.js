@@ -59,7 +59,7 @@ $(document).ready(function() {
 	  } else {
             element.qtip({
                 content: {
-                  text: (event.description || 'no description')
+                  text: '<b>' + event.title + '</b><br/>' + (event.description || 'no description')
                 },
                 style: {
                     classes: 'qtip-bootstrap qtip-rounded qtip-shadown qtip-light',
