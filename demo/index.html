@@ -3,42 +3,65 @@
 <head>
 <meta charset='utf-8' />
 
-<title>icalendar2fullcalendar demo</title>
+<title>Our events</title>
 
-<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.css' rel='stylesheet' />
-<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.print.css' rel='stylesheet' media='print' />
-<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.js'></script>
-
-
-<script src="ical.js"></script>
+<link href='./fullcalendar.css' rel='stylesheet' />
+<link href='./list.min.css' rel='stylesheet' />
+<link href='./jquery.qtip.min.css' rel='stylesheet' />
+<link href='./fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='./moment.min.js'></script>
+<script src='./jquery.min.js'></script>
+<script src='./fullcalendar.js'></script>
+<script src="./ical.min.js"></script>
 <script src="../ical_events.js"></script>
 <script src="../ical_fullcalendar.js"></script>
-<script src="colorize_fullcalendar.js"></script>
-<script src="demo.js"></script>
+<!-- 
+<script src="./colorize_fullcalendar.js"></script>
+-->
+<script src="./jquery.qtip.min.js"></script>
+<script src="./demo.js"></script>
 
 <style>
 body {
-    font-family:monospace;
-    font-size 12px;
-}
-#calendar {
+    font-family: monospace;
+    font-size: 12px;
     max-width: 900px;
     margin: 0 auto 2em;
 }
-.daily-recur {
-    background:red;
+#calendar-feed {
+    margin-top: 10px;
 }
-.event-tgh9qho17b07pk2n2ji3gluansgooglecom {
-    background:green;
+#calendar-feed span {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.daily-recur {
+    background: green;
+}
+h1 {
+  margin-bottom: 0.5em;
 }
 </style>
 
 </head>
 <body>
-    <p>Most of the demo events are between December 2015 and March 2016.</p>
-    <p><button onclick="colorize_events()">Colorize</button> events (see <a href="colorize_fullcalendar.js">colorize_fullcalendar.js</a>)</p>
-    <div id='calendar'></div>
+  <center>
+  <h1 style="padding-left: 40px; text-align: left;">Alolise events</h2>
+    <p style="padding: 4px 4px;margin-bottom: 25px;background-color: LightBlue; border-color: whitesmoke;">Tip: to import the ics feeds to your calendar, use the button next to a calendar to copy its feed URL into your clipboard:
+    </p>
+    <span hidden id='ics-url1'>https://sogo.alolise.org/SOGo/dav/public/jerome.avond/Calendar/2BBA-5AB19A00-1-1147EF20.ics</span>
+    <span hidden id='ics-url2'>https://sogo.alolise.org/SOGo/dav/public/contact.la-bricoleuse/Calendar/5A19-5CC08400-1-65AE8400.ics</span>
+  </div>
+  </center>
+  <div id='calendar'></div>
+  <div id='calendar-feed'>
+    <span>Alolise calendar: 
+      <button id="copyLink1" style="background-color: whitesmoke;border-color: gray;border-width: 1px; vertical-align: middle;border-radius: 4px;" ><img src="./img/clipboard.svg" alt="copy to clipboard" title="copy to clipboard" width="15px" style="padding-top: 3px;"/></button>
+    </span>
+    <span>La Bricoleuse calendar: 
+      <button id="copyLink2" style="background-color: whitesmoke;border-color: gray;border-width: 1px; vertical-align: middle;border-radius: 4px;" ><img src="./img/clipboard.svg" alt="copy to clipboard" title="copy to clipboard" width="15px" style="padding-top: 3px;"/></button>
+    </span>
+    <script src="./copy.js"></script>
+  </div>
 </body>
 </html>

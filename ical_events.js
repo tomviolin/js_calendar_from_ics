@@ -10,7 +10,11 @@ function jcal_events(jcal, event_callback, recur_event_callback) {
             recur_event_callback(event)
         } else {
             event_callback(event)
+            //console.log(event);
         }
+        //var myevent = new ICAL.Event(event);
+        //console.log(myevent.summary, myevent.description, myevent.start, myevent.end, myevent.title);
+        //console.log(event.jCal[1][2][3]);
     }
 }
 

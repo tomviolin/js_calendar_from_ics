@@ -1,10 +1,16 @@
+// Edit your ics sources here
 ics_sources = [
-    {url:'samples/events.ics',event_properties:{color:'gold'}},
-    {url:'samples/events-noend.ics',event_properties:{color:'pink'}},
-    {url:'samples/32c3.ics'},
-    {url:'samples/daily_recur.ics',event_properties:{className:['daily-recur'], url:'http://recurring.events.example.org/'}}
+    {url:'https://sogo.alolise.org/SOGo/dav/public/jerome.avond/Calendar/2BBA-5AB19A00-1-1147EF20.ics', event_properties:{color: 'SeaGreen'}},
+    {url:'https://sogo.alolise.org/SOGo/dav/public/contact.la-bricoleuse/Calendar/5A19-5CC08400-1-65AE8400.ics', event_properties: {color: 'DodgerBlue'}}
 ]
 
+
+
+////////////////////////////////////////////////////////////////////////////
+//
+// Here be dragons!
+//
+////////////////////////////////////////////////////////////////////////////
 
 function data_req (url, callback) {
     req = new XMLHttpRequest()
@@ -29,14 +35,43 @@ function load_ics(ics){
 }
 
 $(document).ready(function() {
+
+    // display events
     $('#calendar').fullCalendar({
         header: {
             left: 'prev,next today',
             center: 'title',
-            right: 'month,agendaWeek,agendaDay'
+            right: 'month,agendaWeek,agendaDay,listWeek,listMonth'
         },
         defaultView: 'month',
-        defaultDate: '2016-03-01'
+        // customize the button names,
+        // otherwise they'd all just say "list"
+        views: {
+          listWeek: { buttonText: 'list week' },
+          listMonth: { buttonText: 'list month' }
+        },
+	navLinks: true,
+	editable: false,
+        eventLimit: true, // allow "more" link when too many events
+        eventRender: function(event, element, view) {
+	  if(view.name == "listMonth" || view.name == "listWeek") {
+            element.find('.fc-list-item-title').append('<div style="margin-top: 0.5em;"></div><span style="font-size: 0.9em">'+(event.description || 'no description')+'</span></div>');
+	  } else {
+            element.qtip({
+                content: {
+                  text: (event.description || 'no description')
+                },
+                style: {
+                    classes: 'qtip-bootstrap qtip-rounded qtip-shadown qtip-light',
+                   // color: '#FFFFFF'
+                },
+                position: {
+                    my: 'top left',
+                    at: 'bottom center',
+                }
+            });
+          }
+        }
     })
     sources_to_load_cnt = ics_sources.length
     for (ics of ics_sources) {

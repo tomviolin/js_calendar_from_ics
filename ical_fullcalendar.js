@@ -57,6 +57,7 @@ function merge_events(e, f) {
 function fc_event(event, event_callback) {
     e = {
         title:event.getFirstPropertyValue('summary'),
+        description:event.getFirstPropertyValue('description'),
         url:event.getFirstPropertyValue('url'),
         id:event.getFirstPropertyValue('uid'),
         className:['event-'+an_filter(event.getFirstPropertyValue('uid'))],
