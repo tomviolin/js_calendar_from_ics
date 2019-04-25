@@ -14291,14 +14291,22 @@ var ListEventRenderer = /** @class */ (function (_super) {
 	        // JY | orig
                 //timeHtml = util_1.htmlEscape(this._getTimeText(calendar.msToMoment(seg.startMs), calendar.msToMoment(seg.endMs), componentFootprint.isAllDay));
 		if (seg.isStart) {
-		    timeDayStart = moment(new Date(calendar.msToMoment(seg.startMs)['_d']));
-		    //console.log('multi-days starting ' + timeDayStart);
-                    timeHtml = 'begins at ' + timeDayStart.format("h:mma");
-		} else if (seg.isEnd) {
-		    timeDayEnd = moment(new Date(calendar.msToMoment(seg.endMs)['_d']));
-		    //console.log('multi-days ending ' + timeDayEnd);
-                    timeHtml = 'ends at ' + timeDayEnd.format("h:mma");
-	        }
+                    // ugly handling of weird results for full days
+                    timeDayStart = moment(new Date(calendar.msToMoment(seg.StartMs)['_d']));
+                    if (timeDayStart.format("HH:mm") == "1:00am" || timeDayStart.format("HH:mm") == "01:00") {
+                        timeHtml = view.getAllDayHtml();
+                    } else {
+                        timeHtml = 'début ' + timeDayStart.format("HH:mm");
+                    }
+                } else if (seg.isEnd) {
+                    timeDayEnd = moment(new Date(calendar.msToMoment(seg.endMs)['_d']));
+                    //console.log('multi-days ending ' + timeDayEnd);
+                    if (timeDayEnd.format("HH:mm") == "1:00am" || timeDayEnd.format("HH:mm") == "01:00") {
+                        timeHtml = view.getAllDayHtml();
+                    } else {
+                        timeHtml = 'fin ' + timeDayEnd.format("HH:mm");
+                    }
+                }
             }
             else { // inner segment that lasts the whole day
                 timeHtml = view.getAllDayHtml();
@@ -14316,7 +14324,7 @@ var ListEventRenderer = /** @class */ (function (_super) {
 	    timeHtml = util_1.htmlEscape(this.getTimeText(eventFootprint));
 	    // JY | ugly hack to 'fix' non-detection of 'AllDay' stuff (cf eventFootprint)
 	    console.log(timeHtml);
-	    if (timeHtml == "12:00am - 12:00am" || "00:00 - 00:00") {
+	    if (timeHtml == "12:00am - 12:00am" || timeHtml == "00:00 - 00:00") {
                 timeHtml = view.getAllDayHtml();
 	    }
         }
