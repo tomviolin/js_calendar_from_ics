@@ -1,5 +1,6 @@
 before_script:
-  - apt-get install zip
+  - apt-cache search zip
+  - apt-get install unzip
 
 build:
   stage: build
