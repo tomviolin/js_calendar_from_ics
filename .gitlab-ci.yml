@@ -1,4 +1,4 @@
-befores_script:
+before_script:
   - apt-get install zip
 
 build:
