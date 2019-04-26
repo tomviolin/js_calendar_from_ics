@@ -1,0 +1,5 @@
+build:
+  stage: build
+  script:
+    - zip -r archive.zip ./
+
