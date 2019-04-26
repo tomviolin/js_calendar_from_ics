@@ -1,3 +1,6 @@
+befores_script:
+  - apt-get install zip
+
 build:
   stage: build
   script:
