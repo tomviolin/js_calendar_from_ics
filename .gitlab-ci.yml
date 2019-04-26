@@ -1,5 +1,6 @@
 before_script:
-  - apt-get install tar gzip curl
+  - apt-get install tar gzip 
+#curl
 
 build:
   stage: build
