@@ -4,5 +4,5 @@ before_script:
 build:
   stage: build
   script:
-    - tar czf archive.tar.gz ./
+    - tar czf /tmp/archive.tar.gz ./
 
