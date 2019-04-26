@@ -1,8 +1,10 @@
 before_script:
-  - apt-get install tar gzip
+  - apt-get install tar gzip curl
 
 build:
   stage: build
   script:
     - tar czf /tmp/archive.tar.gz ./
+    - curl --request PUT --data name="new name" --header "PRIVATE-TOKEN: LWetPsjhcYkQT4sRC6tg" "http://framagit.org/api/v4/projects/44186/releases/v0.01"
+
 
