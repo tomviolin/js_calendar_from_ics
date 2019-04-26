@@ -1,9 +1,8 @@
 before_script:
-  - apt-cache search zip
-  - apt-get install unzip
+  - apt-get install tar gzip
 
 build:
   stage: build
   script:
-    - zip -r archive.zip ./
+    - tar czf archive.tar.gz ./
 
