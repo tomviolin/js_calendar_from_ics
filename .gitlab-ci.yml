@@ -1,6 +1,7 @@
 before_script:
   - apt-get install tar gzip 
   - echo $PATH
+  - ls -la
 #curl
 
 build:
