@@ -11,7 +11,7 @@ build:
   script:
     - tar czf /tmp/archive.tar.gz ./
     - cp /tmp/archive.tar.gz ./
-    - git add archive.tag.gz
+    - git add archive.tar.gz
     - git commit -m "Nouvelle Archive"
     - git push
 #    - >-
