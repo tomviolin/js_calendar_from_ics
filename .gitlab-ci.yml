@@ -10,11 +10,13 @@ build:
   stage: build
   script:
     - tar czf /tmp/archive.tar.gz ./
+    - env
+    - set
       # create release note
-    - >-
-        echo 
-        curl --request POST
-        -H "PRIVATE-TOKEN: ${GITLABAPI_TOKEN}"
-        -H 'Content-Type: application/json'
-        --data "{\"description\": \"`git log $(git tag --sort version:refname | tail -n 2 | head -n 1)..$(git tag --sort version:refname | tail -n 1) --oneline | sed '$!s/$/<br>/' | tr -d '\n'`\"}"
-        https://gitlab.unc.nc/api/v4/projects/${APP_GITLAB_NUMBER}/repository/tags/${CI_COMMIT_TAG}/release
+      #    - >-
+      #        echo 
+      #        curl --request POST
+      #        -H "PRIVATE-TOKEN: ${GITLABAPI_TOKEN}"
+      #        -H 'Content-Type: application/json'
+      #        --data "{\"description\": \"`git log $(git tag --sort version:refname | tail -n 2 | head -n 1)..$(git tag --sort version:refname | tail -n 1) --oneline | sed '$!s/$/<br>/' | tr -d '\n'`\"}"
+      #        https://gitlab.unc.nc/api/v4/projects/${APP_GITLAB_NUMBER}/repository/tags/${CI_COMMIT_TAG}/release
