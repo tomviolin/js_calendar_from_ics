@@ -10,13 +10,17 @@ build:
   stage: build
   script:
     - tar czf /tmp/archive.tar.gz ./
-    - >-
-      echo 
-      curl --request POST
-      -H "PRIVATE-TOKEN: ${CI_JOB_TOKEN}"
-      -H 'Content-Type: application/json'
-      --data '{"description": "Test 1"}'
-      ${CI_API_V4_URL}/projects/${CI_PROJECT_PATH}/repository/tags/v0.01/release
+    - cp /tmp/archive.tar.gz ./
+    - git add archive.tag.gz
+    - git commit -m "Nouvelle Archive"
+    - git push
+#    - >-
+#      echo 
+#      curl --request POST
+#      -H "PRIVATE-TOKEN: ${CI_JOB_TOKEN}"
+#      -H 'Content-Type: application/json'
+#      --data '{"description": "Test 1"}'
+#      ${CI_API_V4_URL}/projects/${CI_PROJECT_PATH}/repository/tags/v0.01/release
 
 #- env
 #- set
