@@ -18,7 +18,7 @@ build:
     - cp /tmp/archive.tar.gz ./
     - git add archive.tar.gz
     - git commit -m "Nouvelle Archive"
-    - git push
+    - git push origin HEAD:master
 #    - >-
 #      echo 
 #      curl --request POST
