@@ -1,9 +1,9 @@
 before_script:
   - apt-get update
-  - apt-get -y install curl tar gzip 
-  - echo $PATH
-  - ls -la
-  - whereis curl wget ls echo zip unzip tar gzip
+  - apt-get -y install curl tar gzip git
+    #  - echo $PATH
+    #  - ls -la
+    #  - whereis curl wget ls echo zip unzip tar gzip
 #curl
 
 build:
