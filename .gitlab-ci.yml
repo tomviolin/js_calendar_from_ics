@@ -10,7 +10,7 @@ build:
   stage: build
   script:
     - tar czf /tmp/archive.tar.gz ./
-    - |
+    - >-
       curl --request POST
       -H "PRIVATE-TOKEN: ${CI_JOB_TOKEN}"
       -H 'Content-Type: application/json'
