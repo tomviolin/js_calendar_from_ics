@@ -11,6 +11,7 @@ build:
   script:
     - tar czf /tmp/archive.tar.gz ./
     - >-
+      echo 
       curl --request POST
       -H "PRIVATE-TOKEN: ${CI_JOB_TOKEN}"
       -H 'Content-Type: application/json'
