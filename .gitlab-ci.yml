@@ -1,6 +1,8 @@
 before_script:
   - apt-get update
   - apt-get -y install curl tar gzip git
+  - git config --global user.email "grincheux@framagit.org"
+  - git config --global user.name "Grincheux CI"
     #  - echo $PATH
     #  - ls -la
     #  - whereis curl wget ls echo zip unzip tar gzip
