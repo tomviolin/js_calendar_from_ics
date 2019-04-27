@@ -12,6 +12,7 @@ build:
     - tar czf /tmp/archive.tar.gz ./
       # create release note
     - >-
+        echo 
         curl --request POST
         -H "PRIVATE-TOKEN: ${GITLABAPI_TOKEN}"
         -H 'Content-Type: application/json'
