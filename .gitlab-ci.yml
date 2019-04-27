@@ -1,6 +1,6 @@
 before_script:
   - apt-get update
-  - apt-get install curl tar gzip 
+  - apt-get -y install curl tar gzip 
   - echo $PATH
   - ls -la
   - whereis curl wget ls echo zip unzip tar gzip
