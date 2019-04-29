@@ -15,10 +15,24 @@ body {
   background: green;
 }
 h1 {
-  margin-bottom: 1em;
-  padding-left: 40px; 
+  margin-top: 0;
+  margin-bottom: 15px;
+  margin-left: 40px; 
+  padding-left: 10px; 
+  padding-right: 10px; 
   text-align: left;
+  font-size: 1em;
+  background-color: whitesmoke;
+  border: 1px solid lightgrey;
+  height: 20px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  float: left;
 }
+#separator {
+  clear: both;
+}
+
 .box-tip {
   margin-top: 10px;
   border-radius: 3px;

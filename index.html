@@ -23,29 +23,16 @@
 
 <body>
   <center>
-  <h1>Nomagic selection of online agendas</h1>
-    <!-- how cool would it be to feed the below from JS?! -->
-    <span hidden id='ics-url1'>https://sogo.nomagic.uk/SOGo/dav/public/contact/Calendar/3D08-5CC47000-1-5EA59B00.ics</span>
-    <span hidden id='ics-url2'>https://opentechcalendar.co.uk/api1/curatedlist/14/events.ical</span>
-    <!-- how cool would it be to feed the above from JS?! -->
+  <h1>MyEntitiy - Our selected events feeds</h1>
+    <div id="separator"></div>
+    <div id="ics-feeds">
+    </div>
   </center>
   <div id='calendar'></div>
   <div class="box-tip" >
     <p>Tip: to import the ics feeds to your calendar app, use the button next to a calendar to copy its feed URL into your clipboard.</p>
-    <!-- how cool would it be to feed the below from JS?! -->
-    <div class='calendar-feed'>
-      <span class="fc-event-dot" style="background-color: SeaGreen"></span>
-      <span>Nomagic calendar 
-        <button id="copyLink1"><img src="./img/clipboard.svg" alt="copy to clipboard" title="copy to clipboard" width="15px" style="padding-top: 3px;"/></button>
-      </span>
+    <div id="legend-feeds">
     </div>
-    <div class='calendar-feed'>
-      <span class="fc-event-dot" style="background-color: DodgerBlue"></span>
-      <span>Open Rights Group calendar
-        <button id="copyLink2"><img src="./img/clipboard.svg" alt="copy to clipboard" title="copy to clipboard" width="15px" style="padding-top: 3px;"/></button>
-      </span>
-    </div>
-    <!-- how cool would it be to feed the above from JS?! -->
     <script src="js/copy.js" type="application/javascript"></script>
   </div>
 </body>
