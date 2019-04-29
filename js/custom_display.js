@@ -1,7 +1,7 @@
 // Edit your ics sources here
 ics_sources = [
     {url:'https://sogo.nomagic.uk/SOGo/dav/public/contact/Calendar/3D08-5CC47000-1-5EA59B00.ics', title:'Nomagic Calendar', event_properties:{color: 'SeaGreen'}},
-    {url:'https://fsfe.org/events/events.en.ics', title: 'fsfe calendar', event_properties: {color: 'DodgerBlue'}}
+    {url:'https://nomagic.uk/calendars/gov.uk/events.ics', title: 'UK Bank Holidays in England and Wales', event_properties: {color: 'DodgerBlue'}}
 ]
 
 
