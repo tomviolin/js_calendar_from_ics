@@ -73,6 +73,25 @@ $(document).ready(function() {
         eventRender: function(event, element, view) {
 	  if(view.name == "listMonth" || view.name == "listWeek") {
             element.find('.fc-list-item-title').append('<div style="margin-top:5px;"></div><span style="font-size: 0.9em">'+(event.description || 'no description')+'</span>'+((event.loc) ? ('<span style="margin-top:5px;display: block"><b>Venue: </b>'+event.loc+'</span>') : ' ')+'</div>');
+	  } else if(view.name == "agendaWeek" || view.name == "agendaDay") {
+            element.qtip({
+                content: {
+                  text: '<small>'+((event.start.format("d") != event.end.format("d")) ? (event.start.format("MMM Do")
+                        +(((event.end.subtract(1,"seconds")).format("d") == event.start.format("d")) ? ' ' : ' - '
+                        +(event.end.subtract(1,"seconds")).format("MMM Do"))) : (event.start.format("HH:mm")
+                        +' - '+event.end.format("HH:mm")))+'</small><br/>'+
+		         '<b>'+event.title+'</b>'+
+			 ((event.description) ? ('<br/>'+event.description) : ' ')+
+			 ((event.loc) ? ('<br/><b>Venue: </b>'+event.loc) : ' ')
+                },
+                style: {
+                    classes: 'qtip-bootstrap qtip-rounded qtip-shadown qtip-light',
+                },
+                position: {
+                    my: 'center left',
+                    at: 'center right',
+                }
+            });
 	  } else {
             element.qtip({
                 content: {
