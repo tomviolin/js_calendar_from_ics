@@ -1,7 +1,8 @@
 // Edit your ics sources here
 ics_sources = [
     {url:'https://sogo.nomagic.uk/SOGo/dav/public/contact/Calendar/3D08-5CC47000-1-5EA59B00.ics', title:'Nomagic Calendar', event_properties:{color: 'SeaGreen'}},
-    {url:'https://nomagic.uk/calendars/gov.uk/events.ics', title: 'UK Bank Holidays in England and Wales', event_properties: {color: 'DodgerBlue'}}
+    {url:'https://nomagic.uk/calendars/gov.uk/events.ics', title: 'UK Bank Holidays in England and Wales', event_properties: {color: 'DodgerBlue'}},
+    {url:'https://nomagic.uk/calendars/gouv.fr/events.ics', title: 'French Bank Holidays in Metropole', event_properties: {color: 'DeepPink'}}
 ]
 
 
@@ -74,34 +75,38 @@ $(document).ready(function() {
 	  if(view.name == "listMonth" || view.name == "listWeek") {
             element.find('.fc-list-item-title').append('<div style="margin-top:5px;"></div><span style="font-size: 0.9em">'+(event.description || 'no description')+'</span>'+((event.loc) ? ('<span style="margin-top:5px;display: block"><b>Venue: </b>'+event.loc+'</span>') : ' ')+'</div>');
 	  } else if(view.name == "agendaWeek" || view.name == "agendaDay") {
-            element.qtip({
-                content: {
-                  text: '<small>'+((event.start.format("d") != event.end.format("d")) ? (event.start.format("MMM Do")
-                        +(((event.end.subtract(1,"seconds")).format("d") == event.start.format("d")) ? ' ' : ' - '
-                        +(event.end.subtract(1,"seconds")).format("MMM Do"))) : (event.start.format("HH:mm")
-                        +' - '+event.end.format("HH:mm")))+'</small><br/>'+
-		         '<b>'+event.title+'</b>'+
-			 ((event.description) ? ('<br/>'+event.description) : ' ')+
-			 ((event.loc) ? ('<br/><b>Venue: </b>'+event.loc) : ' ')
-                },
-                style: {
-                    classes: 'qtip-bootstrap qtip-rounded qtip-shadown qtip-light',
-                },
-                position: {
-                    my: 'center left',
-                    at: 'center right',
-                }
-            });
+            if(event.end == null) { event.end=event.start; }
+              element.qtip({
+                  content: {
+                    text: '<small>'+((event.start.format("d") != event.end.format("d")) ? (event.start.format("MMM Do")
+                          +(((event.end.subtract(1,"seconds")).format("d") == event.start.format("d")) ? ' ' : ' - '
+                          +(event.end.subtract(1,"seconds")).format("MMM Do"))) :
+			  (event.start == event.end ? event.start.format("MMM Do") : event.start.format("HH:mm")
+                          +' - '+event.end.format("HH:mm")))+'</small><br/>'+
+	                   '<b>'+event.title+'</b>'+
+	                  ((event.description) ? ('<br/>'+event.description) : ' ')+
+	                  ((event.loc) ? ('<br/><b>Venue: </b>'+event.loc) : ' ')
+                  },
+                  style: {
+                      classes: 'qtip-bootstrap qtip-rounded qtip-shadown qtip-light',
+                  },
+                  position: {
+                      my: 'center left',
+                      at: 'center right',
+                  }
+              });
 	  } else {
+            if(event.end == null) { event.end=event.start; }
             element.qtip({
                 content: {
-                  text: '<small>'+((event.start.format("d") != event.end.format("d")) ? (event.start.format("MMM Do")
-                        +(((event.end.subtract(1,"seconds")).format("d") == event.start.format("d")) ? ' ' : ' - '
-                        +(event.end.subtract(1,"seconds")).format("MMM Do"))) : (event.start.format("HH:mm")
-                        +' - '+event.end.format("HH:mm")))+'</small><br/>'+
-		         '<b>'+event.title+'</b>'+
-			 ((event.description) ? ('<br/>'+event.description) : ' ')+
-			 ((event.loc) ? ('<br/><b>Venue: </b>'+event.loc) : ' ')
+                    text: '<small>'+((event.start.format("d") != event.end.format("d")) ? (event.start.format("MMM Do")
+                          +(((event.end.subtract(1,"seconds")).format("d") == event.start.format("d")) ? ' ' : ' - '
+                          +(event.end.subtract(1,"seconds")).format("MMM Do"))) :
+		          (event.start == event.end ? event.start.format("MMM Do") : event.start.format("HH:mm")
+                          +' - '+event.end.format("HH:mm")))+'</small><br/>'+
+		          '<b>'+event.title+'</b>'+
+		          ((event.description) ? ('<br/>'+event.description) : ' ')+
+		          ((event.loc) ? ('<br/><b>Venue: </b>'+event.loc) : ' ')
                 },
                 style: {
                     classes: 'qtip-bootstrap qtip-rounded qtip-shadown qtip-light',
