@@ -1,5 +1,8 @@
 // Edit your ics sources here
 ics_sources = [
+	{url:'http://uwm.edu/freshwater/events/?ical=1', title:'SFS Web Events', event_properties:{color: 'Blue'}},
+	{url:'https://panthers.sharepoint.com/:u:/s/SFSReservations/ESR-VJBB6-FJowNFP1Y8I2EBaKFYYKDNfwCJQ0HnR9fggA?e=kNSU92', title:'ROAR Room Reservations', event_properties:{color: 'SeaGreen'}},
+	{url:'https://calendar.google.com/calendar/ical/sfs.neeskay%40gmail.com/public/basic.ics',title:'R/V Neeskay', event_properties:{color:'yellow',background_color:'black'}},
     {url:'https://sogo.nomagic.uk/SOGo/dav/public/contact/Calendar/3D08-5CC47000-1-5EA59B00.ics', title:'Nomagic Calendar', event_properties:{color: 'SeaGreen'}},
     {url:'https://nomagic.uk/calendars/gov.uk/events.ics', title: 'UK Bank Holidays in England and Wales', event_properties: {color: 'DodgerBlue'}},
     {url:'https://nomagic.uk/calendars/gouv.fr/events.ics', title: 'French Bank Holidays in Metropole', event_properties: {color: 'DeepPink'}}
