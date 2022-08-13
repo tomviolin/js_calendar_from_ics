@@ -1,9 +1,17 @@
 body {
-  font-family: monospace;
-  font-size: 12px;
-  max-width: 900px;
+  font-family: 'Archivo Narrow';
+  font-size: 17px;
+  max-width: 1200px;
   margin: 0 auto 2em;
-  background-color: ghostwhite;
+  padding: 0.5em;
+  background-color: #ddeeff;
+}
+
+.fc-view-container {
+	background-color: white;
+}
+.fc-day-header {
+	background-color: #ffffaa;
 }
 .calendar-feed {
   margin: 10px 8px 10px 8px;;

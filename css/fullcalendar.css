@@ -509,7 +509,7 @@ temporary rendered events).
 .fc-event {
 	position: relative; /* for resize handle and other inner positioning */
 	display: block; /* make the <a> tag block */
-	font-size: .85em;
+	font-size: .95em;
 	line-height: 1.3;
 	border-radius: 3px;
 	border: 1px solid #3a87ad; /* default BORDER color */
@@ -521,7 +521,11 @@ temporary rendered events).
 .fc-event,
 .fc-event:hover,
 .ui-widget .fc-event {
-	color: #fff; /* default TEXT color */
+	color: #000; /* default TEXT color */
+	text-shadow: 
+		0.1px 0.1px 4.5px rgba(255,255,255,0.6),
+		0.1px 0.1px 4.5px rgba(255,255,255,0.6);
+	line-height: 1em;
 	text-decoration: none; /* if <a> has an href */
 }
 
@@ -622,7 +626,7 @@ be a descendant of the grid when it is being dragged.
 
 
 .fc-day-grid-event .fc-content { /* force events to be one-line tall */
-	white-space: nowrap;
+	xx_white-space: nowrap;
 	overflow: hidden;
 }
 
@@ -647,6 +651,15 @@ a.fc-more {
 	font-size: .85em;
 	cursor: pointer;
 	text-decoration: none;
+	background-color: #ddbb00;
+	border-width: 1.5px;
+	border-color: black;
+	padding-left:3px;
+	padding-right: 3px;
+	border-radius: 5px;
+	text-shadow: 0 0 3px rgb(255,255,255),
+	             0 0 3px rgb(255,255,255);
+	font-weight: bold;
 }
 
 a.fc-more:hover {
@@ -716,6 +729,7 @@ a.fc-more:hover {
 
 .fc-toolbar h2 {
 	margin: 0;
+	font-family: Arial,Helvetica,sans-serif;
 }
 
 /* button layering (for border precedence) */

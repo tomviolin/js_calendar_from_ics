@@ -1,11 +1,9 @@
 // Edit your ics sources here
 ics_sources = [
-	{url:'http://uwm.edu/freshwater/events/?ical=1', title:'SFS Web Events', event_properties:{color: 'Blue'}},
-	{url:'https://panthers.sharepoint.com/:u:/s/SFSReservations/ESR-VJBB6-FJowNFP1Y8I2EBaKFYYKDNfwCJQ0HnR9fggA?e=kNSU92', title:'ROAR Room Reservations', event_properties:{color: 'SeaGreen'}},
-	{url:'https://calendar.google.com/calendar/ical/sfs.neeskay%40gmail.com/public/basic.ics',title:'R/V Neeskay', event_properties:{color:'yellow',background_color:'black'}},
-    {url:'https://sogo.nomagic.uk/SOGo/dav/public/contact/Calendar/3D08-5CC47000-1-5EA59B00.ics', title:'Nomagic Calendar', event_properties:{color: 'SeaGreen'}},
-    {url:'https://nomagic.uk/calendars/gov.uk/events.ics', title: 'UK Bank Holidays in England and Wales', event_properties: {color: 'DodgerBlue'}},
-    {url:'https://nomagic.uk/calendars/gouv.fr/events.ics', title: 'French Bank Holidays in Metropole', event_properties: {color: 'DeepPink'}}
+	{url:'/proxy.php?prefix='+encodeURI('💧')+'&url='+encodeURI('http://uwm.edu/freshwater/events/?ical=1'), title:'SFS Web Events', prefix:'💧', event_properties:{color: '#9999FF'}},
+	{url:'/proxy.php?prefix='+encodeURI('🚪')+'&url='+encodeURI('/calendars/GLRF_ALL.ics'), title:'ROAR Room Reservations', prefix:'🚪', event_properties:{color: '#aaccff'}},
+	{url:'/proxy.php?prefix='+encodeURI('⛵')+'&url='+encodeURI('https://calendar.google.com/calendar/ical/sfs.neeskay%40gmail.com/public/basic.ics'),title:'R/V Neeskay', prefix:'⛵', event_properties:{color:'#cceeFF'}},
+	{url: '/proxy.php?prefix='+encodeURI('🏢')+'&url='+encodeURI('https://calendar.google.com/calendar/ical/sfs.events.calendar%40gmail.com/public/basic.ics'), title:'SFS Internal Events', prefix:'🏢', event_properties:{color:'#ff9999'}}
 ]
 
 
@@ -41,10 +39,11 @@ function load_ics(ics, cpt){
     document.getElementById("ics-feeds").insertAdjacentHTML('beforeend', "<span hidden id='ics-url"+cpt+"'>"+ics.url+"</span>");
 
     // calendar legend
-    document.getElementById("legend-feeds").insertAdjacentHTML('beforeend', "    <div class='calendar-feed'>" +
-        "<span class='fc-event-dot' style='background-color: "+ics.event_properties['color']+"'></span>" +
-        "<span> "+ics.title+" <button id='copyLink"+cpt+"'>" +
-        "<img src='./img/clipboard.svg' alt='copy to clipboard' title='copy to clipboard' width='15px' style='padding-top: 3px;'/></button></span></div>");
+    document.getElementById("legend-feeds").insertAdjacentHTML('beforeend', "<div class='calendar-feed'>" +
+        "<button class='fc-event' id='copyLink"+cpt+"' style='_xdisplay:inline-block; _xpadding-top:0; _xpadding-left:3px; _xborder-radius:3px; background-color:"+ics.event_properties['color']+"; font-size:16px;'>"+
+		ics.prefix+" "+ics.title+
+	" </button></div>");
+
 
     // copy button for ics feeds
     document.querySelector("#copyLink"+cpt).addEventListener("click", function(){copy("ics-url"+cpt);});
@@ -75,6 +74,7 @@ $(document).ready(function() {
 	editable: false,
         eventLimit: true, // allow "more" link when too many events
         eventRender: function(event, element, view) {
+          console.log(event);
 	  if(view.name == "listMonth" || view.name == "listWeek") {
             element.find('.fc-list-item-title').append('<div style="margin-top:5px;"></div><span style="font-size: 0.9em">'+(event.description || 'no description')+'</span>'+((event.loc) ? ('<span style="margin-top:5px;display: block"><b>Venue: </b>'+event.loc+'</span>') : ' ')+'</div>');
 	  } else if(view.name == "agendaWeek" || view.name == "agendaDay") {
@@ -109,7 +109,8 @@ $(document).ready(function() {
                           +' - '+event.end.format("HH:mm")))+'</small><br/>'+
 		          '<b>'+event.title+'</b>'+
 		          ((event.description) ? ('<br/>'+event.description) : ' ')+
-		          ((event.loc) ? ('<br/><b>Venue: </b>'+event.loc) : ' ')
+		          ((event.loc) ? ('<br/><b>Venue: </b>'+event.loc) : ' ')+
+			  ((event.source.prefix) ? ('<br/>Source: '+event.source.prefix) : ' ')
                 },
                 style: {
                     classes: 'qtip-bootstrap qtip-rounded qtip-shadown qtip-light',
