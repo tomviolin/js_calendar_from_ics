@@ -2820,7 +2820,7 @@ exports.globalDefaults = {
     // display
     columnHeader: true,
     defaultView: 'month',
-    aspectRatio: 1.35,
+    aspectRatio: 1.2,
     header: {
         left: 'title',
         center: '',
@@ -7675,7 +7675,7 @@ var DayGrid = /** @class */ (function (_super) {
                 if (segsBelow.length) {
                     td = cellMatrix[levelLimit - 1][col];
                     moreLink = _this.renderMoreLink(row, col, segsBelow);
-                    moreWrap = $('<div/>').append(moreLink);
+                    moreWrap = $('<div class="fc-more-wrap"/>').append(moreLink);
                     td.append(moreWrap);
                     moreNodes.push(moreWrap[0]);
                 }

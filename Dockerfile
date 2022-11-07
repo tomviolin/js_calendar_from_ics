@@ -15,10 +15,12 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-install mysqli
 
+RUN a2enmod headers
+RUN a2ensite default-ssl.conf
 
 # COPY ./.my.cnf /root/
-COPY . /var/www/html/
-
+COPY html /var/www/html/
+COPY ssl /etc/ssl/
 
 ###  TIMEZONE FIX  (AIN'T IT PURRDY?) ###
 #RUN ln -fs /usr/share/zoneinfo/America/Chicago /etc/localtime
@@ -28,9 +30,11 @@ COPY . /var/www/html/
 
 
 
+COPY ./mkphptz.sh /
+
 RUN ln -fs /usr/share/zoneinfo/America/Chicago /etc/localtime
 RUN dpkg-reconfigure --frontend noninteractive tzdata
-RUN /var/www/html/mkphptz.sh
+RUN /mkphptz.sh
 RUN echo '[mysql]' > /root/.my.cnf
 RUN echo 'host=waterdata.glwi.uwm.edu' >> /root/.my.cnf
 

@@ -7,6 +7,10 @@ body {
   background-color: #ddeeff;
 }
 
+span.emoji {
+	font-family: 'Noto Emoji';
+}
+
 .fc-view-container {
 	background-color: white;
 }

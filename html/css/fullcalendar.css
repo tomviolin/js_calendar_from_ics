@@ -525,7 +525,7 @@ temporary rendered events).
 	text-shadow: 
 		0.1px 0.1px 4.5px rgba(255,255,255,0.6),
 		0.1px 0.1px 4.5px rgba(255,255,255,0.6);
-	line-height: 1em;
+	line-height: 2ex;
 	text-decoration: none; /* if <a> has an href */
 }
 
@@ -628,6 +628,7 @@ be a descendant of the grid when it is being dragged.
 .fc-day-grid-event .fc-content { /* force events to be one-line tall */
 	xx_white-space: nowrap;
 	overflow: hidden;
+	max-height: 4ex;
 }
 
 .fc-day-grid-event .fc-time {
@@ -660,11 +661,31 @@ a.fc-more {
 	text-shadow: 0 0 3px rgb(255,255,255),
 	             0 0 3px rgb(255,255,255);
 	font-weight: bold;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 9px;
 }
 
+.fc-more-cell {
+height:0;
+}
+.fc-more-cell>div {
+	height:0;
+	margin:0;
+	padding:0;
+}
 a.fc-more:hover {
 	text-decoration: underline;
 }
+
+
+.fc-sat {
+	background-color: #eeeeee;
+}
+.fc-sun {
+	background-color: #dddddd;
+}
+
+
 
 .fc-limited { /* rows and cells that are hidden because of a "more" link */
 	display: none;
@@ -1135,4 +1156,9 @@ be a descendant of the grid when it is being dragged.
 	border-width: 5px 6px 5px 0;
 	border-top-color: transparent;
 	border-bottom-color: transparent;
+}
+
+
+div#calendar {
+	height:80%;
 }

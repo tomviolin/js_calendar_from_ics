@@ -1,9 +1,9 @@
 // Edit your ics sources here
 ics_sources = [
-	{url:'/proxy.php?prefix='+encodeURI('💧')+'&url='+encodeURI('http://uwm.edu/freshwater/events/?ical=1'), title:'SFS Web Events', prefix:'💧', event_properties:{color: '#9999FF'}},
-	{url:'/proxy.php?prefix='+encodeURI('🚪')+'&url='+encodeURI('/calendars/GLRF_ALL.ics'), title:'ROAR Room Reservations', prefix:'🚪', event_properties:{color: '#aaccff'}},
-	{url:'/proxy.php?prefix='+encodeURI('⛵')+'&url='+encodeURI('https://calendar.google.com/calendar/ical/sfs.neeskay%40gmail.com/public/basic.ics'),title:'R/V Neeskay', prefix:'⛵', event_properties:{color:'#cceeFF'}},
-	{url: '/proxy.php?prefix='+encodeURI('🏢')+'&url='+encodeURI('https://calendar.google.com/calendar/ical/sfs.events.calendar%40gmail.com/public/basic.ics'), title:'SFS Internal Events', prefix:'🏢', event_properties:{color:'#ff9999'}}
+	{url:'/proxy.php?url='+encodeURI('http://uwm.edu/freshwater/events/?ical=1'), title:'SFS Web Events', prefix:'💧', event_properties:{color: '#9999FF'}},
+	{url:'/proxy.php?url='+encodeURI('http://waterbase.uwm.edu::8882/calendars/GLRF_ALL.ics'), title:'ROAR Room Reservations', prefix:'🚪', event_properties:{color: '#aaccff'}},
+	{url:'/proxy.php?url='+encodeURI('https://calendar.google.com/calendar/ical/sfs.neeskay%40gmail.com/public/basic.ics'),title:'R/V Neeskay', prefix:'⛵', event_properties:{color:'#cceeFF'}},
+	{url: '/proxy.php?url='+encodeURI('https://calendar.google.com/calendar/ical/sfs.events.calendar%40gmail.com/public/basic.ics'), title:'SFS Internal Events', prefix:'🏢', event_properties:{color:'#ff9999'}}
 ]
 
 
@@ -31,7 +31,8 @@ function add_recur_events() {
 
 function load_ics(ics, cpt){
     data_req(ics.url, function(){
-        $('#calendar').fullCalendar('addEventSource', fc_events(this.response, ics.event_properties))
+        $('#calendar').fullCalendar('addEventSource', fc_events(this.response, ics.event_properties));
+
         sources_to_load_cnt -= 1;
     })
     // Meddling with the HTML to add everything related to our ics feeds dynamically
@@ -41,7 +42,7 @@ function load_ics(ics, cpt){
     // calendar legend
     document.getElementById("legend-feeds").insertAdjacentHTML('beforeend', "<div class='calendar-feed'>" +
         "<button class='fc-event' id='copyLink"+cpt+"' style='_xdisplay:inline-block; _xpadding-top:0; _xpadding-left:3px; _xborder-radius:3px; background-color:"+ics.event_properties['color']+"; font-size:16px;'>"+
-		ics.prefix+" "+ics.title+
+		"<span class='emoji'>"+ics.prefix+"</span> "+ics.title+
 	" </button></div>");
 
 
@@ -107,10 +108,10 @@ $(document).ready(function() {
                           +(event.end.subtract(1,"seconds")).format("MMM Do"))) :
 		          (event.start == event.end ? event.start.format("MMM Do") : event.start.format("HH:mm")
                           +' - '+event.end.format("HH:mm")))+'</small><br/>'+
-		          '<b>'+event.title+'</b>'+
+		          '<span class="emoji">'+event.source.prefix+'</span><b>'+event.title+'</b>'+
 		          ((event.description) ? ('<br/>'+event.description) : ' ')+
 		          ((event.loc) ? ('<br/><b>Venue: </b>'+event.loc) : ' ')+
-			  ((event.source.prefix) ? ('<br/>Source: '+event.source.prefix) : ' ')
+			  '<span class="emoji">'+((event.source.prefix)+'</span>' ? ('<br/>Source: '+event.source.prefix) : ' ')
                 },
                 style: {
                     classes: 'qtip-bootstrap qtip-rounded qtip-shadown qtip-light',
